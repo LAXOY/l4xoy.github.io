@@ -1,127 +1,223 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>l4xoy</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: monospace;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #0a0f1f, #000);
+      color: #00ffe1;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .scanline {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      pointer-events: none;
+    }
+
+    .intro {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      animation: fadeOut 50s ease forwards;
+    }
+
+    .glitch {
+      font-size: 2.5rem;
+      letter-spacing: 4px;
+      animation: glitch 1s infinite;
+    }
+
+    .sub {
+      margin-top: 10px;
+      opacity: 0.7;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px red, -2px -2px blue; }
+      50% { text-shadow: -2px 2px #ff00c8, 2px -2px #00fff7; }
+      100% { text-shadow: 2px -2px red, -2px 2px blue; }
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    .container {
+      opacity: 0;
+      animation: show 1s forwards 5s;
+      padding: 30px;
+      max-width: 950px;
+      margin: auto;
+    }
+
+    @keyframes show {
+      to { opacity: 1; }
+    }
+
+    .big-title {
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+      color: #ff00c8;
+      text-shadow: 0 0 10px #ff00c8;
+    }
+
+    .title {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      opacity: 0.6;
+      margin-bottom: 20px;
+    }
+
+    .box {
+      border: 1px solid #00ffe1;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: rgba(0,255,225,0.05);
+      white-space: pre-line;
+    }
+
+    .stats {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      border: 1px solid #00ffe1;
+      padding: 8px 12px;
+      background: rgba(0,255,225,0.05);
+    }
+
+    /* TICKER (REFERANSLAR) */
+    .ticker {
+      overflow: hidden;
+      border-top: 1px solid #00ffe1;
+      border-bottom: 1px solid #00ffe1;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 60px;
+      white-space: nowrap;
+      animation: scroll 35s linear infinite;
+    }
+
+    .ticker span {
+      flex-shrink: 0;
+      color: #00ffe1;
+      opacity: 0.85;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+
 <body>
 
-<div class="top-motto">
-    Muhtaç olduğun kudret, damarlarındaki asil kanda mevcuttur.
+<div class="scanline"></div>
+
+<div class="intro">
+  <div class="glitch">l4xoy</div>
+  <div class="sub">initializing identity layer...</div>
 </div>
 
 <div class="container">
 
-    <section class="hero">
-        <h1>L4xoy</h1>
-        <p>Software Engineering Student • Cyber Security Enthusiast</p>
-    </section>
+  <div class="big-title">
+    MUHTAÇ OLDUĞUN KUDRET DAMARLARINDAKİ ASİL KANDA MEVCUTTUR...
+  </div>
 
-    <div class="card">
-        <h2>👋 Hakkımda</h2>
-        <p>
-            Merhaba, ben L4xoy.
-            22 yaşında bir teknoloji meraklısıyım. Bugün kullandığım kullanıcı adı benim için sıradan bir internet takma adı değil, aynı zamanda bir hatıranın ve yarım kalmış bir hikâyenin devamı.
-            <br><br>
-            Bu kullanıcı adının asıl sahibi, yakın bir arkadaşımdı. Teknolojiye, bilgisayarlara ve internet kültürüne benden çok daha önce ilgi duymaya başlamıştı. Saatlerce projelerden, yapmak istediği işlerden ve gelecekte kurmayı hayal ettiği şeylerden bahsederdi. Birlikte birçok konu hakkında konuşur, yeni fikirler üretir ve bazen sabahlara kadar teknolojinin geleceği üzerine tartışırdık.
-            <br><br>
-            6 Şubat depremlerinde onu kaybettik.
-            <br><br>
-            Bir süre sonra bu ismi tamamen geride bırakmak yerine yaşatmaya karar verdim. Kullanıcı adında küçük bir değişiklik yaparak onu kullanmaya devam etmeye başladım.
-            <br><br>
-            Teknolojiye olan ilgim küçük yaşlarda başladı. Zamanla bu merak beni siber güvenlik alanına yönlendirdi.
-            <br><br>
-            Henüz genç yaşlarda saldırı teknikleri ve tehdit aktörlerinin çalışma yöntemleri üzerine araştırmalar yapma fırsatı buldum. Bu sayede yalnızca savunma tarafını değil, saldırganların düşünme biçimini de anlayabiliyorum.
-            <br><br>
-            İlgi alanlarım arasında siber güvenlik, medya ve teknoloji bulunuyor. Öğrenmek, üretmek ve paylaşmak hayatımın önemli bir parçası.
-        </p>
+  <div class="title">l4xoy</div>
+  <div class="tag">system identity / narrative node / digital echo</div>
+
+  <div class="box">
+
+Merhaba, ben l4xoy.
+22 yaşında bir teknoloji meraklısıyım. Bugün kullandığım kullanıcı adı benim için sıradan bir internet takma adı değil, aynı zamanda bir hatıranın ve yarım kalmış bir hikâyenin devamı.
+
+Bu kullanıcı adının asıl sahibi, yakın bir arkadaşımdı. Teknolojiye, bilgisayarlara ve internet kültürüne benden çok daha önce ilgi duymaya başlamıştı. Saatlerce projelerden, yapmak istediği işlerden ve gelecekte kurmayı hayal ettiği şeylerden bahsederdi. Birlikte birçok konu hakkında konuşur, yeni fikirler üretir ve bazen sabahlara kadar teknolojinin geleceği üzerine tartışırdık.
+
+6 Şubat depremlerinde onu kaybettik...
+
+Hayat bazen insanı hazırlıksız yakalıyor. Bir gün birlikte gelecek planları kurduğunuz bir insanın ertesi gün yalnızca anılarınızda kalması, tarif edilmesi zor bir duygu. Uzun süre onun kullandığı kullanıcı adını her gördüğümde aklıma yarım kalan hayaller ve gerçekleştirmeyi istediği projeler geldi.
+
+Bir süre sonra bu ismi tamamen geride bırakmak yerine yaşatmaya karar verdim. Kullanıcı adında küçük bir değişiklik yaparak onu kullanmaya devam etmeye başladım. Bu yüzden l4xoy yalnızca bir takma ad değil; aynı zamanda dostluğun, anıların ve yarım kalan hedeflerin devamı anlamına geliyor.
+
+Teknolojiye olan ilgim küçük yaşlarda başladı. Bilgisayarların nasıl çalıştığını, sistemlerin neden hata verdiğini ve insanların her gün kullandığı teknolojilerin arkasında neler olduğunu öğrenmeye çalışıyordum. Zamanla bu merak beni siber güvenlik alanına yönlendirdi.
+
+Henüz genç yaşlarda saldırı teknikleri, güvenlik açıkları ve tehdit aktörlerinin çalışma yöntemleri üzerine eğitim alma ve araştırmalar yapma fırsatı buldum. Bu süreç bana yalnızca sistemleri korumayı değil, aynı zamanda saldırganların nasıl düşündüğünü anlamayı da öğretti.
+
+Bugün ilgi alanlarım arasında siber güvenlik, medya, dijital araştırmalar ve teknoloji bulunuyor. Yeni şeyler öğrenmek, araştırmak ve öğrendiklerimi paylaşmak günlük hayatımın önemli bir parçası.
+
+Bu siteyi çalışmalarımı, düşüncelerimi ve projelerimi paylaşmak için oluşturdum.
+
+Bazı isimler yalnızca bir kullanıcı adından ibaret değildir.
+Bazıları bir hikâyeyi taşır.
+
+  </div>
+
+  <div class="box">
+    Sistem Durumu
+    <div class="stats">
+      <div class="stat">+50 Başarılı işlem</div>
+      <div class="stat">+20 Referans</div>
+      <div class="stat">durum: Her Daim Aktif</div>
     </div>
+  </div>
 
-    <div class="card">
-        <h2>⚡ Yetenekler</h2>
-        <div class="skills">
-            <div class="skill">HTML</div>
-            <div class="skill">CSS</div>
-            <div class="skill">JavaScript</div>
-            <div class="skill">Python</div>
-            <div class="skill">Linux</div>
-            <div class="skill">Cyber Security</div>
-            <div class="skill">Networking</div>
-            <div class="skill">Git</div>
-        </div>
+  <div class="ticker">
+    <div class="ticker-track">
+
+      <span>@emirkaya "Bilmediği konuda biliyormuş gibi davranmıyor."</span>
+      <span>@kaanarsln "Saatlerce araştırır, pes etmez."</span>
+      <span>@keremoztrk "Direkt çözüm odaklı."</span>
+      <span>@berkatalay "Detaycı yaklaşımı fark yaratıyor."</span>
+      <span>@onuryalcin "Gece bile geri dönüş yapar."</span>
+      <span>@yusufcetin "Sürekli kendini geliştirir."</span>
+      <span>@serkanaksoy "Kendi fikrini üretir."</span>
+      <span>@alibektas "Teknik konuları sade anlatır."</span>
+      <span>@ozgurdemir "Mantığını kurmadan geçmez."</span>
+      <span>@mstfkrgz "Gerçekten severek yapar."</span>
+
     </div>
-
-    <div class="card">
-        <h2>📊 İstatistik</h2>
-        <div class="stats">
-            <div class="stat-box">50+ Proje</div>
-            <div class="stat-box">100+ Saat Araştırma</div>
-            <div class="stat-box">20+ Teknik Analiz</div>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>💬 Referanslar</h2>
-        <div class="marquee">
-            <div class="track">
-                @emirkaya: "Bilmediği konuda biliyormuş gibi davranmıyor." •
-                @kaanarsln: "Bir şeye kafayı taktı mı bırakmıyor." •
-                @keremoztrk: "Direkt konuya giriyor, laf uzatmıyor." •
-                @berkatalay: "Detayları kaçırmıyor." •
-                @onuryalcin: "Gece bile dönüş yaptı." •
-                @yusufcetin: "Sürekli gelişiyor." •
-                @serkanaksoy: "Kendi fikri var." •
-                @alibektas: "Sade anlatıyor." •
-                @ozgurdemir: "Mantığını çözmeden geçmiyor." •
-                @mstfkrgz: "Gösteriş yok, iş var."
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        © 2026 L4xoy
-    </footer>
+  </div>
 
 </div>
 
-<style>
-.top-motto{
-    text-align:center;
-    padding:18px;
-    font-size:14px;
-    color:#8b949e;
-    border-bottom:1px solid #30363d;
-    background:#0d1117;
-    letter-spacing:0.5px;
-}
-
-/* stats */
-.stats{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.stat-box{
-    background:#21262d;
-    padding:12px 18px;
-    border-radius:10px;
-    color:#e6edf3;
-}
-
-/* marquee */
-.marquee{
-    overflow:hidden;
-    white-space:nowrap;
-    border:1px solid #30363d;
-    padding:12px;
-    border-radius:10px;
-    background:#161b22;
-}
-
-.track{
-    display:inline-block;
-    animation:scroll 25s linear infinite;
-}
-
-@keyframes scroll{
-    0%{transform:translateX(100%);}
-    100%{transform:translateX(-100%);}
-}
-</style>
-
 </body>
+</html>
